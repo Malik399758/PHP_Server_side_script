@@ -26,6 +26,39 @@ echo 'Password :',$password.'<br>';
 
 
 
+// increment and decrement
+
+$a = 1;
+$a++;
+
+echo 'Increment value is :',$a.'<br>';
+
+$b = 2;
+$b--;
+
+echo 'Decrement value is :',$b.'<br>';
+
+
+// pre increment and post increment
+
+// pre increment
+
+/*$x = 5;
+$y= ++$x;
+
+echo "x = $x, y = $y";
+*/
+
+// post increment
+
+$x = 5;
+$y = $x++;
+
+echo "x = $x, y = $y";
+
+
+
+
 
 
 
