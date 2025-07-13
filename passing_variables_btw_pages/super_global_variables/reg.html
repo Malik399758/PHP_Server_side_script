@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #table {
+            border: 2px solid black;
+            height: 200px;
+            width: 200px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .submit{
+            color:white;
+            background-color: green;
+            border-radius: 4px;
+            width: 100px;
+        }
+    </style>
+    <center>
+        <div id="container">
+            <table id='table'>
+                <tr>
+                    <td>
+                        <h3>Registration form</h3>
+                        <form action="reg.php" method="post">
+
+                            <input type="text" placeholder="Enter first name" name="firstname"><br><br>
+                            <input type="text" placeholder="Enter last name" name="lastname"><br><br>
+                            <input type="text" placeholder="Enter your email" name="email"><br><br>
+                            <input type="text" placeholder="Enter your password" name="password"><br><br>
+                            <input type="submit" value="submit" class="submit">
+                        </form>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+
+        </div>
+
+    </center>
+
+
+
+
+</body>
+
+</html>

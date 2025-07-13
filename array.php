@@ -43,7 +43,29 @@ $multiarray = [
 ];
 echo "Multi Dimension array :".'<br>';
 echo $multiarray[0][2].'<br>';
-echo $multiarray[1][0];
+echo $multiarray[1][0].'<br>';
+
+
+
+$numbers = array(1,2,3,4,5,6,7,8,9,10);
+$sum = 0;
+$count = count($numbers);
+
+for($i=0; $i < $count ; $i++){
+  $sum = $sum + $numbers[$i];
+}
+echo 'The sum of array is :',$sum;
+
+
+$even = array(1,2,3,4,6);
+$evenCount = count($even);
+$evenSum = 0;
+for($i=0; $i<$evenCount; $i++){
+  if($even[$i] % 2 == 0){
+    $evenSum = $evenSum + $even[$i];
+  }
+}
+echo 'The even number of sum is ',$evenSum;
 
 
 ?>
