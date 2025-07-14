@@ -38,6 +38,9 @@
             border-radius: 4px;
             width: 100px;
         }
+        .error{
+            color: red;
+        }
     </style>
     <center>
         <div id="container">
@@ -45,12 +48,17 @@
                 <tr>
                     <td>
                         <h3>Registration form</h3>
-                        <form action="reg.php" method="post">
+                        <form action="" method="post">
 
-                            <input type="text" placeholder="Enter first name" name="firstname"><br><br>
-                            <input type="text" placeholder="Enter last name" name="lastname"><br><br>
-                            <input type="text" placeholder="Enter your email" name="email"><br><br>
-                            <input type="text" placeholder="Enter your password" name="password"><br><br>
+                            <input type="text" placeholder="Enter first name" name="firstname" id="firstname"><br>
+                            <span id="firstnameError" class="error"></span><br>
+                            <input type="text" placeholder="Enter last name" name="lastname" id="lastname"><br>
+                             <span id="lastnameError" class="error"></span><br>
+                            <input type="text" placeholder="Enter your email" name="email" id="email"><br>
+                             <span id="emailError" class="error"></span><br>
+                            <input type="text" placeholder="Enter your password" name="password" id="password"><br>
+                             <span id="passwordError" class="error"></span><br>
+                              <span id="emptyError" class="error"></span>
                             <input type="submit" value="submit" class="submit">
                         </form>
 
@@ -65,6 +73,49 @@
         </div>
 
     </center>
+
+    <script>
+           // Javascript code
+         document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+         
+        // assign value of these variables.
+        var firstName = document.getElementById('firstname').value;
+        var lastName = document.getElementById('lastname').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        document.getElementById('firstnameError').textContent = '';
+         document.getElementById('lastnameError').textContent = '';
+          document.getElementById('emailError').textContent = '';
+           document.getElementById('passwordError').textContent = '';
+            document.getElementById('emptyError').textContent = '';
+           
+
+        // create reg
+        var regFirst = /^[A-Za-z]{1,10}$/;
+        var regLast = /^[A-Za-z]{1,10}$/;
+        var regEmail = /^[A-Za-z0-9]+\@[a-z]{5}\.[a-z]{3}$/;
+        var regPassword = /^[0-9]{8}$/;
+
+        if(!firstName || !lastName || !email || !password){
+            document.getElementById('emptyError').textContent = 'Please fill the form first';
+            return;
+        }else if(!regFirst.test(firstName)){
+             document.getElementById('firstnameError').textContent = 'Please enter valid first name';
+        }else if(!regLast.test(lastName)){
+             document.getElementById('lastnameError').textContent = 'Please enter valid last name';
+        }else if(!regEmail.test(email)){
+            document.getElementById('emailError').textContent = 'Please enter valid email';
+        }else if(!regPassword.test(password)){
+             document.getElementById('passwordError').textContent = 'Please the password should be at least 8 character';
+        }else{
+            alert('Form submitted successfully');
+        }
+
+    });
+        
+    </script>
 
 
 
