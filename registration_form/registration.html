@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Professional Registration Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .form-card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      min-height: 14px;
+      margin-top: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-card">
+    <h2>Registration Form</h2>
+    <form>
+      <div class="form-group">
+        <label for="id">Enter ID</label>
+        <input type="text" id="id" name="id" placeholder="Enter your ID">
+        <div class="error-message" id="id-error"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" name="firstname" placeholder="Enter first name">
+        <div class="error-message" id="firstname-error"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Enter last name">
+        <div class="error-message" id="lastname-error"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+        <div class="error-message" id="email-error"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        <div class="error-message" id="password-error"></div>
+        <div class="error-message" id="empty-error"></div>
+
+      </div>
+
+      
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+    // javascript code
+    var userId = document.getElementById('id').value.trim();
+    var firstName = document.getElementById('firstname').value.trim();
+    var lastName = document.getElementById('lastname').value.trim();
+    var userEmail = document.getElementById('email').value.trim();
+    var userPassword = document.getElementById('password').value.trim();
+
+    // prevoius error empty
+     document.getElementById('id-error').textContent = '';
+    document.getElementById('firstname-error').textContent = '';
+    document.getElementById('lastname-error').textContent = '';
+    document.getElementById('email-error').textContent = '';
+    document.getElementById('password-error').textContent = '';
+    document.getElementById('empty-error').textContent = '';
+
+
+    // regular expression
+    var regId = /^[0-9]{1,5}$/;
+    var regFirst = /^[A-Za-z]{3,10}$/;
+    var regLast = /^[A-Za-z]{5,10}$/;
+    var regEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    var regPassword = /^[0-9]{8,12}$/;
+
+    let hasEmptyField = false;
+
+   // Check each field one by one
+if (!userId) {
+  document.getElementById('id-error').textContent = 'User ID is required';
+  hasEmptyField = true;
+}
+
+if (!firstName) {
+  document.getElementById('firstname-error').textContent = 'First name is required';
+  hasEmptyField = true;
+}
+
+if (!lastName) {
+  document.getElementById('lastname-error').textContent = 'Last name is required';
+  hasEmptyField = true;
+}
+
+if (!userEmail) {
+  document.getElementById('email-error').textContent = 'Email is required';
+  hasEmptyField = true;
+}
+
+if (!userPassword) {
+  document.getElementById('password-error').textContent = 'Password is required';
+  hasEmptyField = true;
+}
+
+// Now check if ALL fields are empty
+if (
+  !userId &&
+  !firstName &&
+  !lastName &&
+  !userEmail &&
+  !userPassword
+) {
+  document.getElementById('empty-error').textContent = 'Please fill all fields first';
+  return;
+}
+
+// If any field is empty, stop submission
+if (hasEmptyField) {
+  return;
+}
+    });
+
+   
+
+
+//     var active = false;
+
+//     if(!userId || !firstName || !lastName || !userEmail || !userPassword){
+//     document.getElementById('empty-error').textContent = 'Please fill the form first';
+//     return;
+//     }else if(!userId){
+//        document.getElementById('id-error').textContent = 'User id required*';
+//        active = false;
+//     }
+//     else if(!regId.test(userId)){
+//         document.getElementById('id-error').textContent = 'Please enter your id';
+//         return;
+//     }else if(!regFirst.test(firstName)){
+//         document.getElementById('firstname-error').textContent = 'Please the first name should be at least 3 alphabet';
+//         return;
+//     }else if(!regLast.test(lastName)){
+//         document.getElementById('lastname-error').textContent = 'Please the last name should be at least 3 alphabet';
+//         return;
+//     }else if(!regEmail.test(userEmail)){
+//         document.getElementById('email-error').textContent = 'Please enter valid email';
+//         return;
+//     }else if(!regPassword.test(userPassword)){
+//         document.getElementById('password-error').textContent = 'Password should br at least 8 character';
+//         return;
+//     }else{
+//         alert('Registration successfully!!');
+//     }
+// });
+
+  </script>
+
+</body>
+</html>
