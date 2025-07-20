@@ -17,7 +17,6 @@ if(!preg_match($regPassword,$password)){
     exit();
 }
 
-
 $sql = "INSERT INTO $tableName (Name,Password) VALUES ('$name','$password')";
 
 mysqli_query($con,$sql);
